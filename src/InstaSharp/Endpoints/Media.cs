@@ -99,5 +99,15 @@ namespace InstaSharp.Endpoints
             request.AddParameter("distance", distance);
             return Client.ExecuteAsync<MediasResponse>(request);
         }
+        
+        /// <summary>
+        /// Search media by shortcode from url. An example shortlink is http://instagram.com/p/D/ Its corresponding shortcode is D.
+        /// </summary>
+        /// <param name="shortcode">A media object's shortcode can be found in its shortlink URL. </param>
+        public Task<MediaResponse> Shortcode(string shortcode)
+        {
+            var request = Request("shortcode/" + shortcode);
+            return Client.ExecuteAsync<MediaResponse>(request);
+        }
     }
 }
